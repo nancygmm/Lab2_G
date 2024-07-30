@@ -64,10 +64,10 @@ impl GameOfLife {
 }
 
 fn main() {
-    let window_width = 1600;
-    let window_height = 900;
-    let framebuffer_width = 160;
-    let framebuffer_height = 90;
+    let window_width = 800;
+    let window_height = 600;
+    let framebuffer_width = 80;
+    let framebuffer_height = 60;
 
     let mut framebuffer = Framebuffer::new(framebuffer_width, framebuffer_height);
     let mut window = Window::new(
