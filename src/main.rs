@@ -1,4 +1,4 @@
-use minifb::{Window, WindowOptions, Key};
+use minifb::{Window, WindowOptions, Key, Scale, ScaleMode};
 
 mod framebuffer;
 use crate::framebuffer::Framebuffer;
@@ -74,13 +74,18 @@ fn main() {
         "UVG Graphixs",
         window_width,
         window_height,
-        WindowOptions::default(),
+        WindowOptions {
+            borderless: true,
+            resize: false,
+            scale: Scale::X1,
+            scale_mode: ScaleMode::AspectRatioStretch,
+            ..WindowOptions::default()
+        },
     ).unwrap();
 
-    framebuffer.set_background_color(0x000000);
-    framebuffer.set_current_color(0xFFFFFF);
+    framebuffer.set_background_color(0x99CCFF);
+    framebuffer.set_current_color(0xFFFF99);
 
-    // Definir varios patrones de organismos
     let glider = vec![(1, 2), (2, 2), (3, 2), (3, 1), (2, 0)];
     let small_exploder = vec![
         (5, 5), (6, 5), (7, 5), (4, 6), (8, 6), (5, 7), (7, 7), (6, 8),
@@ -96,7 +101,6 @@ fn main() {
         (23, 21), (23, 22), (22, 23)
     ];
 
-    // Patrones adicionales
     let block = vec![(30, 30), (31, 30), (30, 31), (31, 31)];
     let bee_hive = vec![(33, 30), (34, 29), (35, 29), (36, 30), (35, 31), (34, 31)];
     let loaf = vec![(38, 30), (39, 29), (40, 29), (41, 30), (41, 31), (40, 32), (39, 31)];
@@ -125,7 +129,6 @@ fn main() {
         (50, 41), (54, 41), (54, 42), (54, 43), (53, 44), (50, 44), (51, 44), (52, 44)
     ];
 
-    // Inicializar el juego con varios patrones
     let mut initial_state = Vec::new();
     initial_state.extend(glider);
     initial_state.extend(small_exploder);
