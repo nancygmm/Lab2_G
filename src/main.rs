@@ -71,7 +71,7 @@ fn main() {
 
     let mut framebuffer = Framebuffer::new(framebuffer_width, framebuffer_height);
     let mut window = Window::new(
-        "UVG Graphixs",
+        "Laboratorio 2",
         window_width,
         window_height,
         WindowOptions {
