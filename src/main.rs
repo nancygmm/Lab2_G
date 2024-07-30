@@ -80,8 +80,27 @@ fn main() {
     framebuffer.set_background_color(0x000000);
     framebuffer.set_current_color(0xFFFFFF);
 
-    // Patrón inicial (puedes cambiar esto)
-    let initial_state = vec![(1, 2), (2, 2), (3, 2)]; // Glider pattern
+    let glider = vec![(1, 2), (2, 2), (3, 2), (3, 1), (2, 0)];
+    let small_exploder = vec![
+        (5, 5), (6, 5), (7, 5), (4, 6), (8, 6), (5, 7), (7, 7), (6, 8),
+    ];
+    let exploder = vec![
+        (10, 10), (11, 10), (12, 10), (13, 10), (14, 10),
+        (10, 12), (14, 12),
+        (10, 14), (11, 14), (12, 14), (13, 14), (14, 14),
+    ];
+    let lightweight_spaceship = vec![
+        (20, 20), (21, 20), (22, 20), (23, 20), 
+        (20, 21), (20, 23), 
+        (23, 21), (23, 22), (22, 23)
+    ];
+
+    let mut initial_state = Vec::new();
+    initial_state.extend(glider);
+    initial_state.extend(small_exploder);
+    initial_state.extend(exploder);
+    initial_state.extend(lightweight_spaceship);
+
     let mut game = GameOfLife::new(framebuffer_width, framebuffer_height, initial_state);
 
     while window.is_open() && !window.is_key_down(Key::Escape) {
