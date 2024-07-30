@@ -80,6 +80,7 @@ fn main() {
     framebuffer.set_background_color(0x000000);
     framebuffer.set_current_color(0xFFFFFF);
 
+    // Definir varios patrones de organismos
     let glider = vec![(1, 2), (2, 2), (3, 2), (3, 1), (2, 0)];
     let small_exploder = vec![
         (5, 5), (6, 5), (7, 5), (4, 6), (8, 6), (5, 7), (7, 7), (6, 8),
@@ -95,11 +96,52 @@ fn main() {
         (23, 21), (23, 22), (22, 23)
     ];
 
+    // Patrones adicionales
+    let block = vec![(30, 30), (31, 30), (30, 31), (31, 31)];
+    let bee_hive = vec![(33, 30), (34, 29), (35, 29), (36, 30), (35, 31), (34, 31)];
+    let loaf = vec![(38, 30), (39, 29), (40, 29), (41, 30), (41, 31), (40, 32), (39, 31)];
+    let boat = vec![(43, 30), (44, 30), (43, 31), (44, 32), (42, 31)];
+    let tub = vec![(46, 30), (47, 31), (46, 32), (45, 31)];
+    let blinker = vec![(50, 30), (50, 31), (50, 32)];
+    let beacon = vec![(55, 30), (56, 30), (55, 31), (57, 32), (58, 32), (57, 33)];
+    let pulsar = vec![
+        (60, 25), (61, 25), (62, 25), (60, 29), (61, 29), (62, 29),
+        (60, 27), (62, 27),
+        (58, 27), (58, 26), (58, 28),
+        (64, 27), (64, 26), (64, 28),
+        (65, 25), (66, 25), (67, 25), (65, 29), (66, 29), (67, 29),
+        (65, 27), (67, 27)
+    ];
+    let pentadecathlon = vec![
+        (70, 25), (71, 25), (72, 25), (74, 25), (75, 25), (76, 25),
+        (73, 24), (73, 26), (72, 23), (72, 27), (74, 23), (74, 27)
+    ];
+    let middleweight_spaceship = vec![
+        (30, 40), (31, 40), (32, 40), (33, 40), (34, 40),
+        (30, 41), (34, 41), (34, 42), (34, 43), (33, 44), (30, 44), (32, 44)
+    ];
+    let heavyweight_spaceship = vec![
+        (50, 40), (51, 40), (52, 40), (53, 40), (54, 40), 
+        (50, 41), (54, 41), (54, 42), (54, 43), (53, 44), (50, 44), (51, 44), (52, 44)
+    ];
+
+    // Inicializar el juego con varios patrones
     let mut initial_state = Vec::new();
     initial_state.extend(glider);
     initial_state.extend(small_exploder);
     initial_state.extend(exploder);
     initial_state.extend(lightweight_spaceship);
+    initial_state.extend(block);
+    initial_state.extend(bee_hive);
+    initial_state.extend(loaf);
+    initial_state.extend(boat);
+    initial_state.extend(tub);
+    initial_state.extend(blinker);
+    initial_state.extend(beacon);
+    initial_state.extend(pulsar);
+    initial_state.extend(pentadecathlon);
+    initial_state.extend(middleweight_spaceship);
+    initial_state.extend(heavyweight_spaceship);
 
     let mut game = GameOfLife::new(framebuffer_width, framebuffer_height, initial_state);
 
